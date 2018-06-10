@@ -1,35 +1,17 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:orientation="vertical">
 
-
-    <LinearLayout
+    <android.support.v7.widget.SearchView
+        android:id="@+id/sV"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:padding="10dp">
-
-        <EditText
-            android:id="@+id/editText"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="3"
-            android:hint="@string/search_bar"
-            tools:text="Insert Title"
-            android:padding="5dp"/>
-
-        <Button
-            android:id="@+id/search_btn"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/search_button"/>
-
-    </LinearLayout>
+        app:iconifiedByDefault="false"
+        app:queryHint="Search title"/>
 
     <ListView
         android:id="@+id/list"
