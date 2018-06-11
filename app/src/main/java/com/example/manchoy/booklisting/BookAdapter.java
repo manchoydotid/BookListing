@@ -38,15 +38,25 @@ public class BookAdapter extends ArrayAdapter<Book> {
 
         TextView authorView = (TextView)listItemView.findViewById(R.id.author);
         String author = new String(currentBook.getmAuthor());
+        if(author==null){
+            authorView.setText(" ");
+        }
         authorView.setText(author);
 
         TextView descView = (TextView)listItemView.findViewById(R.id.description);
         String desc = new String(currentBook.getmDesc());
+        if(desc == null){
+            descView.setText("no description");
+        }
         descView.setText(desc);
 
         ImageView thumbView = (ImageView)listItemView.findViewById(R.id.thumbnail);
+        String url = new String(currentBook.getmThumb());
+        if(url == null){
+            thumbView.setImageResource(R.drawable.ic_book_black_24dp);
+        }
         Glide.with(getContext())
-            .load(currentBook.getmThumb())
+            .load(url)
                 .into(thumbView);
 
         return listItemView;

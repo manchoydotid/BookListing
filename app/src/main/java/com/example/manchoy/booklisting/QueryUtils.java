@@ -116,6 +116,7 @@ public class QueryUtils {
 
                 String desc = volumeInfo.getString("description");
 
+//                TODO Kalo search "Bumi Manusia" ada result yang imageLinksnya ga ada
                 JSONObject imageLinks = volumeInfo.getJSONObject("imageLinks");
                 String thumbnail = imageLinks.getString("thumbnail");
 

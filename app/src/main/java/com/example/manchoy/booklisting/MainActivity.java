@@ -40,13 +40,13 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         if(s.contains(" ")){
             query = s.replace(" ","+");
         }
-        Log.e("Kata yang dicari ", query);
         String URL =
                 "https://www.googleapis.com/books/v1/volumes?q="+query+"&key="+API_KEY;
 
         BookAsyncTask task = new BookAsyncTask();
         task.execute(URL);
 
+        //kalo returnnya true abis search, keyboardnya ga ilang
         return false;
     }
 
