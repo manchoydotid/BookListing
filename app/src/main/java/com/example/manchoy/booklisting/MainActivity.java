@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     String query;
     private SearchView searchView;
     private BookAdapter mAdapter;
-    private static final String API_KEY = "AIzaSyBWZxUFeGeZ6_DJJZVHGmXNm1VX2h0VT10";
+    private static final String API_KEY = "";
 
 
     @Override
