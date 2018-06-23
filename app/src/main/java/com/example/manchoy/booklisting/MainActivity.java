@@ -23,7 +23,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private SearchView searchView;
     private BookAdapter mAdapter;
     //TODO API KEY Kosong
-    private static final String API_KEY = "AIzaSyBWZxUFeGeZ6_DJJZVHGmXNm1VX2h0VT10 ";
+    private static final String API_KEY = " ";
 
 
     @Override
