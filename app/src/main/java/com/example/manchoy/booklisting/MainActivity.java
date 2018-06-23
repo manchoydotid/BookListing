@@ -5,19 +5,25 @@ import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.SearchView;
 import android.util.Log;
+import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.ProgressBar;
 
 import java.util.ArrayList;
 import java.util.List;
 
+import static android.view.View.GONE;
+
 public class MainActivity extends AppCompatActivity implements SearchView.OnQueryTextListener{
 
     String query;
+    private ProgressBar progressBar;
     private SearchView searchView;
     private BookAdapter mAdapter;
-    private static final String API_KEY = "";
+    //TODO API KEY Kosong
+    private static final String API_KEY = "AIzaSyBWZxUFeGeZ6_DJJZVHGmXNm1VX2h0VT10 ";
 
 
     @Override
@@ -27,6 +33,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         searchView = (SearchView)findViewById(R.id.sV);
         searchView.setOnQueryTextListener(this);
+
+        progressBar = (ProgressBar)findViewById(R.id.progressBar);
+        progressBar.setVisibility(View.INVISIBLE);
 
         ListView bookListView = (ListView)findViewById(R.id.list);
         mAdapter = new BookAdapter(this, new ArrayList<Book>());
@@ -59,6 +68,11 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
     private class BookAsyncTask extends AsyncTask<String, Void, List<Book>>{
 
         @Override
+        protected void onPreExecute() {
+            progressBar.setVisibility(View.VISIBLE);
+        }
+
+        @Override
         protected List<Book> doInBackground(String... urls) {
             if (urls.length < 1 || urls[0] == null) {
                 return null;
@@ -69,10 +83,12 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
         @Override
         protected void onPostExecute(List<Book> books) {
+            progressBar.setVisibility(GONE);
             mAdapter.clear();
             if(books!= null && !books.isEmpty()){
                 mAdapter.addAll(books);
             }
         }
+
     }
 }
